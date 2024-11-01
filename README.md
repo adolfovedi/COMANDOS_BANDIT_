@@ -1,0 +1,1 @@
+# COMANDOS_BANDIT_0 a 26
