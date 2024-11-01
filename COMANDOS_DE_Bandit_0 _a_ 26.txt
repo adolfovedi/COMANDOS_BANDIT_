@@ -1,0 +1,228 @@
+Bandit 0 a 1
+ls: Lista los archivos y directorios en el directorio actual.
+cat readme: Muestra el contenido del archivo llamado readme, que contiene la contraseña para el siguiente nivel.
+
+Bandit 1 a 2
+ls: Lista el contenido del directorio actual.
+cat ./-: Lee el contenido de un archivo llamado -, que es un nombre inusual para un archivo. ./ indica que el archivo está en el directorio actual.
+
+Bandit 2 a 3
+ls: Lista los archivos en el directorio actual.
+cat s*: Muestra el contenido de archivos que empiezan con "s" usando el comodín *, que representa cualquier cantidad de caracteres después de la "s".
+
+Bandit 3 a 4
+ls: Lista los archivos en el directorio actual.
+cd inhere: Cambia el directorio a inhere.
+ls -la: Lista todos los archivos (incluyendo ocultos) en formato detallado dentro de inhere.
+cat ...Hiding-From-You: Muestra el contenido de un archivo llamado ...Hiding-From-You.
+
+Bandit 4 a 5
+ls: Lista los archivos en el directorio actual.
+cd inhere: Cambia al directorio inhere.
+cat ./-file07: Muestra el contenido del archivo -file07, especificando su nombre con ./ para que el sistema no lo interprete como un argumento.
+
+Bandit 5 a 6
+ls: Lista los archivos en el directorio actual.
+cd inhere: Cambia al directorio inhere.
+cat ./maybehere07/.file2: Muestra el contenido del archivo .file2 que está dentro de la subcarpeta maybehere07, indicando el archivo con ./.
+
+Bandit 6 a 7
+ls: Lista los archivos en el directorio actual.
+find / -user bandit7 -group bandit6 -size 33c 2>/dev/null:
+
+find: Busca archivos y directorios.
+/: Busca desde la raíz del sistema.
+-user bandit7: Filtra archivos cuyo propietario es bandit7.
+-group bandit6: Filtra archivos cuyo grupo es bandit6.
+-size 33c: Filtra archivos de tamaño exactamente 33 bytes.
+2>/dev/null: Redirige los errores a /dev/null para que no se muestren en la terminal.
+cat /var/lib/dpkg/info/bandit7.password: Muestra el contenido del archivo encontrado en la búsqueda.
+
+Bandit 7 a 8
+ls: Lista los archivos en el directorio actual.
+cat data.txt | grep "millionth":
+
+cat data.txt: Muestra el contenido de data.txt.
+|: Pasa la salida de un comando como entrada al siguiente.
+grep "millionth": Filtra líneas que contienen la palabra "millionth".
+
+Bandit 8 a 9
+ls: Lista los archivos en el directorio actual.
+cat data.txt | sort | uniq -u:
+
+sort: Ordena las líneas alfabéticamente.
+uniq -u: Muestra solo las líneas únicas (sin repeticiones).
+
+Bandit 9 a 10
+ls: Lista los archivos en el directorio actual.
+strings data.txt | grep "===":
+strings: Extrae las secuencias de texto de un archivo binario.
+grep "===": Filtra líneas que contienen la secuencia "===".
+
+Bandit 10 a 11
+ls: Lista los archivos en el directorio actual.
+cat data.txt | base64 -d | sed 's/ /\n/g':
+base64 -d: Decodifica el contenido en Base64.
+sed 's/ /\n/g': Reemplaza cada espacio por un salto de línea (\n) usando sed.
+
+Bandit 11 a 12
+ls: Lista los archivos en el directorio actual.
+cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m':
+tr 'A-Za-z' 'N-ZA-Mn-za-m': Traduce caracteres de A-Z y a-z a un cifrado ROT13 (cambio de 13 posiciones en el alfabeto).
+cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m' | awk 'NF{print $NF}':
+awk 'NF{print $NF}': Filtra y muestra la última palabra de cada línea que contiene algún contenido (NF indica que la línea tiene campos).
+
+Bandit 12 a 13
+ls: Lista los archivos y directorios en el directorio actual.
+cat data.txt: Muestra el contenido de data.txt.
+Nueva terminal con Kali: Abre una nueva terminal en Kali Linux para manejar archivos en un entorno adicional si es necesario.
+cd bandit12: Cambia al directorio bandit12.
+touch data: Crea un archivo vacío llamado data.
+nano data: Abre el archivo data con el editor nano.
+7z x data.hex: Extrae el contenido del archivo data.hex usando 7z (7-Zip), que se usa para descomprimir archivos.
+7z x data2.bin y comandos similares: Continúa extrayendo el contenido de archivos generados, descomponiendo progresivamente archivos anidados que requieren extracción en varias capas.
+cat data9.bin: Muestra el contenido del archivo data9.bin, el archivo final extraído.
+rm *bin: Elimina todos los archivos que terminan en .bin, limpiando el directorio.
+rm data2: Elimina el archivo data2 para continuar con el proceso de limpieza de archivos temporales.
+
+Bandit 13 a 14
+ls: Lista los archivos y directorios en el directorio actual.
+head sshkey.private: Muestra las primeras líneas del archivo sshkey.private, una clave privada utilizada para autenticación SSH.
+ls -l: Lista archivos en formato detallado, mostrando permisos, tamaño, propietario, etc.
+ssh -i sshkey.private bandit14@localhost: Realiza una conexión SSH al usuario bandit14 en localhost usando la clave privada sshkey.private.
+ssh -i sshkey.private bandit14@localhost -p 2220: Conecta al usuario bandit14 en el puerto 2220 con la clave privada sshkey.private, que es necesario para Bandit.
+
+Bandit 14 a 15
+cd /etc/bandit_pass/: Cambia al directorio donde están las contraseñas de Bandit.
+ls: Lista los archivos en el directorio /etc/bandit_pass/.
+cat bandit14: Muestra el contenido del archivo bandit14, que contiene la contraseña para el siguiente nivel.
+cat bandit14 | nc localhost 30000:
+|: Canaliza la salida del comando cat bandit14 como entrada para el siguiente.
+nc localhost 30000: Conecta al puerto 30000 en localhost usando Netcat para enviar la contraseña.
+
+Bandit 15 a 16
+ls: Lista los archivos y directorios en el directorio actual.
+ls -al: Lista archivos en formato detallado, mostrando archivos ocultos y permisos.
+ncat --ssl localhost 30001:
+--ssl: Conecta usando una conexión segura (SSL).
+localhost 30001: Establece conexión en el puerto 30001 de localhost usando Netcat con SSL.
+
+Bandit 16 a 17
+nmap localhost -p 31000-32000:
+nmap: Realiza un escaneo de puertos.
+localhost: Escanea los puertos en el sistema local.
+-p 31000-32000: Limita el escaneo a los puertos de 31000 a 32000.
+cat /etc/bandit_pass/bandit16: Muestra la contraseña almacenada en el archivo bandit16.
+ncat --ssl localhost 31790: Establece una conexión SSL al puerto 31790 en localhost usando Netcat.
+chmod 600 bandit17: Cambia los permisos del archivo bandit17 para que solo el propietario pueda leer y escribir.
+ssh -i bandit17 bandit17@bandit.labs.overthewire.org -p 2220: Inicia una conexión SSH usando la clave bandit17 al usuario bandit17 en el puerto 2220.
+
+Bandit 17 a 18
+diff passwords.old passwords.new:
+diff: Compara dos archivos línea por línea y muestra las diferencias.
+passwords.old y passwords.new: Archivos de contraseñas viejas y nuevas para comparar los cambios.
+Resultado x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO: La contraseña encontrada en la diferencia entre los archivos de contraseña.
+
+Bandit 18 a 19
+ssh -t -l bandit18 bandit.labs.overthewire.org -p 2220 /bin/sh:
+-t: Fuerza la asignación de una pseudo-terminal para ejecutar comandos interactivos.
+-l bandit18: Especifica el usuario bandit18.
+/bin/sh: Abre una sesión de shell en la conexión SSH.
+cat readme: Muestra el contenido del archivo readme, que contiene la contraseña para el siguiente nivel.
+
+Bandit 19 a 20
+ls -l: Lista los archivos en formato detallado.
+cat /etc/bandit_pass/bandit20: Muestra la contraseña del nivel 20.
+./bandit20-do cat /etc/bandit_pass/bandit20: Ejecuta el archivo bandit20-do, que permite ejecutar comandos como bandit20, para leer la contraseña en /etc/bandit_pass/bandit20.
+
+Bandit 20 a 21
+ls -l: Lista los archivos y directorios en el directorio actual en formato detallado.
+nc -vlp 1234:
+nc: Inicia una instancia de Netcat.
+-v: Activa el modo detallado para obtener información adicional.
+-l: Configura Netcat en modo de escucha.
+-p 1234: Escucha en el puerto 1234.
+./suconnect 1234: Ejecuta el script suconnect, pasando el puerto 1234 para establecer una conexión con la instancia de Netcat.
+
+Bandit 21 a 22
+ls -l /etc/cron.d: Lista los archivos en el directorio /etc/cron.d con detalles.
+cat /etc/cron.d/cronjob_bandit22: Muestra el contenido del archivo cronjob_bandit22, que contiene información sobre tareas cron programadas.
+cat /usr/bin/cronjob_bandit22.sh: Lee el contenido del script cronjob_bandit22.sh, que es ejecutado por el cronjob.
+cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv: Muestra el contenido de un archivo temporal en /tmp, que contiene la contraseña generada por el cronjob.
+
+Bandit 22 a 23
+ls -la /etc/cron.d: Lista los archivos y sus detalles en /etc/cron.d, incluyendo archivos ocultos.
+cd /etc/cron.d: Cambia al directorio /etc/cron.d.
+cat cronjob_bandit23: Muestra el contenido de cronjob_bandit23, que define las tareas programadas para el usuario bandit23.
+cat /usr/bin/cronjob_bandit23.sh: Muestra el contenido del script cronjob_bandit23.sh, ejecutado por el cronjob.
+echo I am user bandit23 | md5sum | cut -d ' ' -f 1:
+echo I am user bandit23: Muestra la frase "I am user bandit23".
+| md5sum: Calcula el hash MD5 de la frase.
+| cut -d ' ' -f 1: Extrae el primer campo de la salida de md5sum, que es el hash MD5.
+cat /tmp/8ca319486bfbbc3663ea0fbe81326349: Muestra el contenido del archivo en /tmp con el nombre de hash MD5 generado, que contiene la contraseña para el siguiente nivel.
+
+Bandit 23 a 24
+ls -la /etc/cron.d: Lista todos los archivos en /etc/cron.d con detalles, incluidos los ocultos.
+cd /etc/cron.d: Cambia al directorio /etc/cron.d.
+cat cronjob_bandit24: Muestra el contenido del archivo cronjob_bandit24, que especifica tareas cron ejecutadas regularmente.
+cat bandit24 /usr/bin/cronjob_bandit24.sh: Muestra el contenido del archivo cronjob_bandit24.sh, donde se encuentra el script que ejecuta el cronjob.
+cd /var/spool/bandit24/foo: Cambia al directorio /var/spool/bandit24/foo, donde se ejecuta el cronjob.
+mkdir /tmp/adolfo: Crea un directorio temporal llamado adolfo.
+nano scrip.sh: Abre el editor nano y crea un script para copiar la contraseña de bandit24 a un archivo temporal:
+bash
+Copiar código
+#! /bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/adolfo/contrasenia
+chmod 777 -R /tmp/adolfo: Da permisos de lectura, escritura y ejecución a todos los archivos en /tmp/adolfo de forma recursiva.
+cp scrip.sh /var/spool/bandit24/foo/: Copia el script scrip.sh al directorio donde el cronjob lo ejecutará.
+cat contrasenia: Muestra el contenido del archivo contrasenia, que contiene la contraseña para el siguiente nivel.
+
+Bandit 24 a 25
+for i in {0000..9999}; do echo "gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 $i"; done | nc localhost 30002:
+Genera todos los posibles códigos de 4 dígitos (0000 a 9999) y los envía junto con la contraseña inicial gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 a localhost en el puerto 30002 mediante Netcat.
+for i in {0000..9999}; do echo "gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 $i"; done | nc localhost 30002 | grep -v "Wrong":
+Filtra y muestra solo el resultado correcto, omitiendo los intentos fallidos.
+
+Bandit 25 a 26
+ssh -i bandit26.sshkey bandit26@localhost -p 2220: Conecta al nivel 26 usando la clave SSH bandit26.sshkey.
+:e /etc/bandit_pass/bandit26:
+Abre el archivo bandit26 en el editor para ver la contraseña.
+:q!: Sale del editor sin guardar cambios.
+
+Bandit 26 a 27
+:set shell=/bin/bash: Configura el editor para que utilice /bin/bash como shell.
+:Shell: Abre un shell desde el editor.
+./bandit27-do bash -p: Ejecuta el script bandit27-do con privilegios (-p), para ver la contraseña.
+cat /etc/bandit_pass/bandit27: Muestra el contenido del archivo que contiene la contraseña del nivel 27.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
